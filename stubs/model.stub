@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use App\Models\BaseModel;
+
+class {{ class }} extends BaseModel
+{
+    /** @var array<string, string> */
+    public const array COLUMNS = [
+        'id'        => 'id',
+        'createdAt' => 'created_at',
+        'updatedAt' => 'updated_at',
+    ];
+}

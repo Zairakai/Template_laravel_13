@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@zairakai/js-dev-tools/tsconfig",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "outDir": "dist",
+    "rootDir": "resources/js"
+  },
+  "include": ["resources/js/**/*"],
+  "exclude": ["node_modules", "dist", "build", "public", "vendor", "**/*.test.ts", "**/*.spec.ts"]
+}

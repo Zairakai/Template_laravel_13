@@ -1,0 +1,53 @@
+# Dependencies — regenerated locally, never committed
+/vendor
+/node_modules
+
+# Lock files — not committed in templates
+composer.lock
+package-lock.json
+
+# Build output
+/build
+/public/build
+/public/hot
+
+# Laravel runtime
+/public/storage
+/storage/*.key
+/storage/pail
+
+# Secrets & local config
+# Committed: .env.example, .env.testing, .env.production (CI template, no real values)
+# Ignored:   .env (actual secrets), .env.backup
+.env
+.env.backup
+/auth.json
+docker-compose.override.yml
+
+# Test cache
+/.phpunit.cache
+.phpunit.result.cache
+
+# IDE & editors
+.phpactor.json
+/.idea
+/.vscode
+/.nova
+/.fleet
+/.zed
+
+# Legacy & package manager logs
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Dev Tools (zairakai/laravel-dev-tools)
+.*.tmp.*
+# config/dev-tools/
+
+# Dev Tools - Generated temporary files
+.*.tmp.*
+
+# Dev Tools - Published configs (optional, uncomment to ignore)
+# config/dev-tools/

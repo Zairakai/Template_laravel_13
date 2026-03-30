@@ -1,0 +1,2 @@
+name,email,email_verified_at,remember_token,created_at,updated_at
+"Admin","admin@example.com","2024-01-01 00:00:00","tok_admin","2024-01-01 00:00:00","2024-01-01 00:00:00"

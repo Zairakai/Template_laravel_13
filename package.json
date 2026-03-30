@@ -1,0 +1,67 @@
+{
+  "name": "{{APP_SLUG}}",
+  "description": "{{APP_DESCRIPTION}}",
+  "private": true,
+  "type": "module",
+  "homepage": "https://gitlab.com/{{GITLAB_PATH}}",
+  "bugs": {
+    "url": "https://gitlab.com/{{GITLAB_PATH}}/-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/{{GITLAB_PATH}}.git"
+  },
+  "funding": [
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/c/zairakai"
+    },
+    {
+      "type": "twitch",
+      "url": "https://www.twitch.tv/zairakai"
+    }
+  ],
+  "license": "MIT",
+  "author": "Stanislas Poisson <stanislas.p@the-white-rabbits.fr> (https://the-white-rabbits.fr)",
+  "contributors": [
+    {
+      "name": "Stanislas Poisson",
+      "url": "https://gitlab.com/zairakai",
+      "role": "Maintainer"
+    }
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "postinstall": "bash node_modules/@zairakai/js-dev-tools/scripts/setup-project.sh --silent || true"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "@zairakai/js-dev-tools": "^1.0.0",
+    "jsdom": "^26.0.0",
+    "knip": "^5.0.0",
+    "laravel-vite-plugin": "^2.1.0",
+    "sass": "^1.98.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.0.0",
+    "vitest": "^4.0.0",
+    "vue-tsc": "^2.0.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1",
+    "@zairakai/js-http-client": "^1.0.0",
+    "@zairakai/js-i18n": "^1.0.0",
+    "@zairakai/js-utils": "^1.0.0",
+    "@zairakai/mithril-scss": "^1.0.0",
+    "@zairakai/vue-components": "^1.1.0",
+    "pinia": "^2.3.1",
+    "pinia-orm": "^1.10.2",
+    "vue": "^3.5.30",
+    "vue-router": "^4.6.4",
+    "zod": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

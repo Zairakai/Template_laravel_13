@@ -1,0 +1,13 @@
+# PHPStan configuration for LARAVEL APPLICATIONS
+# For full Laravel apps that consume laravel-dev-tools
+
+includes:
+    - ../../vendor/larastan/larastan/extension.neon
+    - ../../vendor/zairakai/laravel-dev-tools/config/base.neon
+
+parameters:
+    paths:
+        - ../../app
+        - ../../tests
+
+    tmpDir: ../../build/phpstan

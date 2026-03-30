@@ -1,0 +1,4 @@
+name,email,email_verified_at,remember_token,created_at,updated_at
+"Alice Martin","alice@example.com","2024-01-10 08:00:00","tok_alice","2024-01-10 08:00:00","2024-01-10 08:00:00"
+"Bob Dupont","bob@example.com","2024-02-15 09:30:00","tok_bob","2024-02-15 09:30:00","2024-02-15 09:30:00"
+"Claire Petit","claire@example.com",NULL,"tok_claire","2024-03-20 14:00:00","2024-03-20 14:00:00"

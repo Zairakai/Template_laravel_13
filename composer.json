@@ -1,0 +1,122 @@
+{
+    "name": "{{VENDOR}}/{{APP_SLUG}}",
+    "description": "{{APP_NAME}}",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Stanislas Poisson",
+            "email": "stanislas.p@the-white-rabbits.fr",
+            "homepage": "https://gitlab.com/zairakai",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://gitlab.com/{{GITLAB_PATH}}",
+    "support": {
+        "issues": "https://gitlab.com/{{GITLAB_PATH}}/-/issues",
+        "source": "https://gitlab.com/{{GITLAB_PATH}}",
+        "docs": "https://gitlab.com/{{GITLAB_PATH}}/-/blob/main/README.md"
+    },
+    "funding": [
+        {
+            "type": "patreon",
+            "url": "https://www.patreon.com/c/zairakai"
+        },
+        {
+            "type": "other",
+            "url": "https://www.twitch.tv/zairakai"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^13.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^3.0",
+        "zairakai/laravel-activity": "^2.0",
+        "zairakai/laravel-blade-components": "^2.0",
+        "zairakai/laravel-eloquent": "^2.0",
+        "zairakai/laravel-essentials": "^2.0"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.50",
+        "fakerphp/faker": "^1.24",
+        "larastan/larastan": "^3.0",
+        "laravel/pail": "^1.2",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "pestphp/pest": "^4.4",
+        "pestphp/pest-plugin-laravel": "^4.1",
+        "zairakai/laravel-dev-tools": "^2.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        },
+        "files": [
+            "app/Support/Helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        },
+        "files": [
+            "app/Support/Helpers-dev.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true,
+            "zairakai/laravel-dev-tools": true
+        },
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "authors": [
+            {
+                "email": [
+                    "stanislas.p@the-white-rabbits.fr"
+                ],
+                "name": "Stanislas Poisson",
+                "notes": "Primary maintainer",
+                "social": {
+                    "github": "https://github.com/Stanislas-Poisson",
+                    "gitlab": "https://gitlab.com/zairakai",
+                    "linkedin": "https://www.linkedin.com/in/stanislasp/",
+                    "stanislas-poisson": "https://the-white-rabbits.fr",
+                    "the-white-rabbits": "https://the-white-rabbits.fr",
+                    "twitch": "https://twitch.tv/zairakai"
+                }
+            }
+        ],
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@setup-dev-tools"
+        ],
+        "post-update-cmd": [
+            "@setup-dev-tools"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "setup-dev-tools": "bash vendor/zairakai/laravel-dev-tools/scripts/setup-package.sh --silent"
+    },
+    "$schema": "https://getcomposer.org/schema.json"
+}
