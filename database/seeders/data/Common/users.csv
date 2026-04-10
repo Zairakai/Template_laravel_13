@@ -1,2 +1,2 @@
-name,email,email_verified_at,remember_token,created_at,updated_at
-"Admin","admin@example.com","2024-01-01 00:00:00","tok_admin","2024-01-01 00:00:00","2024-01-01 00:00:00"
+name,email,email_verified_at,password,remember_token,created_at,updated_at
+"Admin","admin@example.com","2024-01-01 00:00:00","$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi","tok_admin","2024-01-01 00:00:00","2024-01-01 00:00:00"

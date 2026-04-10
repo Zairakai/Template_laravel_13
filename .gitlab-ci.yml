@@ -7,7 +7,7 @@
 
 include:
   - project: "zairakai/php-packages/laravel-dev-tools"
-    ref: v2.0.1
+    ref: v2.1.4
     file: ".gitlab/ci/pipeline-laravel-fullstack.yml"
 
 variables:

@@ -1,5 +1,6 @@
 artisan
 *.php
+.composer-cache/
 bootstrap/cache/
 build/
 coverage/

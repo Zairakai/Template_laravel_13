@@ -27,11 +27,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'              => fake()->name(),
-            'email'             => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password'          => (static::$password ??= Hash::make('password')),
-            'remember_token'    => Str::random(10),
+            User::resolveColumn('name')             => fake()->name(),
+            User::resolveColumn('email')            => fake()->unique()->safeEmail(),
+            User::resolveColumn('emailVerifiedAt')  => now(),
+            User::resolveColumn('password')         => (static::$password ??= Hash::make('password')),
+            User::resolveColumn('rememberToken')    => Str::random(10),
         ];
     }
 
@@ -42,7 +42,7 @@ class UserFactory extends Factory
     {
         return $this->state(
             fn () => [
-                'email_verified_at' => null,
+                User::resolveColumn('emailVerifiedAt') => null,
             ],
         );
     }
