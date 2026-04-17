@@ -16,7 +16,7 @@ return [
     */
 
     'throttle' => [
-        'max_attempts'  => (int) env('API_THROTTLE_MAX_ATTEMPTS', 60),
+        'max_attempts' => (int) env('API_THROTTLE_MAX_ATTEMPTS', 60),
         'decay_minutes' => (int) env('API_THROTTLE_DECAY_MINUTES', 1),
     ],
 
