@@ -14,11 +14,8 @@ export default {
     'pinia-orm',
     // Utility library — re-exported or used via side effects
     '@zairakai/js-utils',
-    // Vitest environment — referenced as string in vitest.config.js
-    'jsdom',
     // Dev tooling — invoked via scripts/make, not imported
     'vue-tsc',
     '@vitest/coverage-v8',
-    'vitest',
   ],
 }
