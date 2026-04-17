@@ -24,7 +24,7 @@ abstract class BaseRequest extends FormRequest
             response()
                 ->json(
                     [
-                        'status'  => 'error',
+                        'status' => 'error',
                         'message' => 'This action is unauthorized.',
                     ],
                     Response::HTTP_FORBIDDEN,
@@ -45,9 +45,9 @@ abstract class BaseRequest extends FormRequest
             response()
                 ->json(
                     [
-                        'status'  => 'error',
+                        'status' => 'error',
                         'message' => 'Validation failed.',
-                        'errors'  => $validator->errors()->toArray(),
+                        'errors' => $validator->errors()->toArray(),
                     ],
                     Response::HTTP_UNPROCESSABLE_ENTITY,
                 ),

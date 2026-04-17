@@ -18,17 +18,17 @@ use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
  * as it replaces by index instead of merging.
  */
 
-$baseConfig    = [];
-$currentFile   = __FILE__;
+$baseConfig = [];
+$currentFile = __FILE__;
 $possiblePaths = [
     /* Normal Laravel project */
-    dirname(__DIR__, 2) . '/vendor/zairakai/laravel-dev-tools/config/insights.base.php',
+    dirname(__DIR__, 2).'/vendor/zairakai/laravel-dev-tools/config/insights.base.php',
 
     /* Testbench environment */
-    dirname(__DIR__, 6) . '/config/insights.base.php',
+    dirname(__DIR__, 6).'/config/insights.base.php',
 
     /* Local project config */
-    dirname(__DIR__, 2) . '/config/insights.base.php',
+    dirname(__DIR__, 2).'/config/insights.base.php',
 ];
 
 foreach ($possiblePaths as $path) {
