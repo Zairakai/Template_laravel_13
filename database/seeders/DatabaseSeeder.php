@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
      * @var array<string, array<int, string>>
      */
     protected array $environmentSeeders = [
-        'local' => ['Calls/Local'],
+        'local'   => ['Calls/Local'],
         'testing' => ['Calls/Testing'],
         'staging' => ['Calls/Staging'],
     ];
@@ -63,14 +63,14 @@ class DatabaseSeeder extends Seeder
         }
 
         foreach ($this->commonSeeders as $directory) {
-            $this->loadSeedersFromPath(database_path('seeders/'.$directory));
+            $this->loadSeedersFromPath(database_path('seeders/' . $directory));
         }
 
         $environment = App::environment();
 
         if (isset($this->environmentSeeders[$environment])) {
             foreach ($this->environmentSeeders[$environment] as $directory) {
-                $this->loadSeedersFromPath(database_path('seeders/'.$directory));
+                $this->loadSeedersFromPath(database_path('seeders/' . $directory));
             }
         }
     }
@@ -85,7 +85,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $seeders = collect(File::files($path))
-            ->filter(fn ($file) => $file->getExtension() === 'php')
+            ->filter(fn ($file) => 'php' === $file->getExtension())
             ->map(fn ($file) => str_replace(
                 [database_path('seeders/'), '.php', '/'],
                 ['Database\\Seeders\\', '', '\\'],
@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
             ->values()
             ->all();
 
-        if ($seeders !== []) {
+        if ([] !== $seeders) {
             $this->call($seeders);
         }
     }

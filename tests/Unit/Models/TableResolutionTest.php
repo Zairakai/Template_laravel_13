@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Activity\Log;
 use App\Models\Auth\PasswordResetToken;
 use App\Models\Auth\Session;
 use App\Models\Auth\User;
@@ -10,6 +11,10 @@ use App\Models\Queue\Job;
 use App\Models\Queue\JobBatch;
 
 describe('table name resolution', function (): void {
+    it('derives activity_logs from Activity\\Log namespace', function (): void {
+        expect(Log::getTableName())->toBe('activity_logs');
+    });
+
     it('derives auth_users from Auth\\User namespace', function (): void {
         expect(User::getTableName())->toBe('auth_users');
     });
@@ -36,6 +41,23 @@ describe('table name resolution', function (): void {
 });
 
 describe('column resolution', function (): void {
+    it('resolves Log camelCase keys to their database column names', function (): void {
+        expect(Log::resolveColumn('logName'))->toBe('log_name')
+            ->and(Log::resolveColumn('subjectType'))->toBe('subject_type')
+            ->and(Log::resolveColumn('subjectId'))->toBe('subject_id')
+            ->and(Log::resolveColumn('causerType'))->toBe('causer_type')
+            ->and(Log::resolveColumn('causerId'))->toBe('causer_id')
+            ->and(Log::resolveColumn('batchUuid'))->toBe('batch_uuid')
+            ->and(Log::resolveColumn('createdAt'))->toBe('created_at')
+            ->and(Log::resolveColumn('updatedAt'))->toBe('updated_at');
+    });
+
+    it('resolves Log passthrough keys that share the same name', function (): void {
+        expect(Log::resolveColumn('description'))->toBe('description')
+            ->and(Log::resolveColumn('properties'))->toBe('properties')
+            ->and(Log::resolveColumn('event'))->toBe('event');
+    });
+
     it('resolves User camelCase keys to snake_case columns', function (): void {
         expect(User::resolveColumn('rememberToken'))->toBe('remember_token')
             ->and(User::resolveColumn('emailVerifiedAt'))->toBe('email_verified_at')

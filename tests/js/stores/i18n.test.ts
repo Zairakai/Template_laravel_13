@@ -1,7 +1,7 @@
-import { createPinia, setActivePinia } from 'pinia'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { defaultLocale, fallbackLocale } from '@/config/i18n'
 import { useI18nStore } from '@/stores/i18n'
+import { createPinia, setActivePinia } from 'pinia'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 const mockTranslations = {
   common: { hello: 'Bonjour' },
@@ -21,10 +21,13 @@ describe('useI18nStore', () => {
   })
 
   it('loads a locale and marks store as loaded', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-      ok: true,
-      json: vi.fn().mockResolvedValue(mockTranslations),
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: vi.fn().mockResolvedValue(mockTranslations),
+      })
+    )
 
     const store = useI18nStore()
     await store.loadLocale('fr')
@@ -35,10 +38,13 @@ describe('useI18nStore', () => {
   })
 
   it('falls back to fallbackLocale for unknown locale', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-      ok: true,
-      json: vi.fn().mockResolvedValue(mockTranslations),
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: vi.fn().mockResolvedValue(mockTranslations),
+      })
+    )
 
     const store = useI18nStore()
     await store.loadLocale('xx')
@@ -61,10 +67,13 @@ describe('useI18nStore', () => {
   })
 
   it('does not mark as loaded if fetch fails', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-      ok: false,
-      status: 401,
-    }))
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({
+        ok: false,
+        status: 401,
+      })
+    )
 
     const store = useI18nStore()
     await store.loadLocale('fr')

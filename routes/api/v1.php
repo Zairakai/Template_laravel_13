@@ -6,16 +6,15 @@ use App\Http\Controllers\API\V1\Cache\TransController;
 use Illuminate\Support\Facades\Route;
 
 /*
-|--------------------------------------------------------------------------
-| API v1 Routes
-|--------------------------------------------------------------------------
-|
-| All routes here are prefixed with /api/v1 automatically.
-|
-*/
+ * API v1 Routes
+ *----------------
+ *
+ * All routes here are prefixed with /api/v1 automatically.
+ *
+ */
 
 Route::get('/health', static fn () => response()->json([
-    'status' => 'ok',
+    'status'  => 'ok',
     'version' => 'v1',
 ]));
 
@@ -23,6 +22,7 @@ Route::get('/health', static fn () => response()->json([
 // lang/ files must not contain role-specific or business-logic translations.
 // If a project needs role-aware translations, add a dedicated authenticated
 // endpoint in that project (e.g. GET /api/v1/user/context).
-Route::prefix('/cache')->group(function (): void {
-    Route::get('/trans/{lang}', TransController::class);
-});
+Route::prefix('/cache')
+    ->group(function (): void {
+        Route::get('/trans/{lang}', TransController::class);
+    });

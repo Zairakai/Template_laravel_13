@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
+use App\Models\Cache\Entry;
+use App\Models\Cache\Lock;
 use Illuminate\Support\Str;
 
 return [
     /*
-    |--------------------------------------------------------------------------
     | Default Cache Store
-    |--------------------------------------------------------------------------
     |
     | This option controls the default cache store that will be used by the
     | framework. This connection is utilized if another isn't explicitly
@@ -19,9 +19,7 @@ return [
     'default' => env('CACHE_STORE', 'database'),
 
     /*
-    |--------------------------------------------------------------------------
     | Cache Stores
-    |--------------------------------------------------------------------------
     |
     | Here you may define all of the cache "stores" for your application as
     | well as their drivers. You may even define multiple stores for the
@@ -41,9 +39,9 @@ return [
         'database' => [
             'driver'          => 'database',
             'connection'      => env('DB_CACHE_CONNECTION'),
-            'table'           => env('DB_CACHE_TABLE', 'cache'),
+            'table'           => env('DB_CACHE_TABLE', Entry::getTableName()),
             'lock_connection' => env('DB_CACHE_LOCK_CONNECTION'),
-            'lock_table'      => env('DB_CACHE_LOCK_TABLE'),
+            'lock_table'      => env('DB_CACHE_LOCK_TABLE', Lock::getTableName()),
         ],
 
         'file' => [
@@ -89,9 +87,7 @@ return [
     ],
 
     /*
-    |--------------------------------------------------------------------------
     | Cache Key Prefix
-    |--------------------------------------------------------------------------
     |
     | When utilizing the APC, database, memcached, Redis, and DynamoDB cache
     | stores, there might be other applications using the same cache. For
@@ -99,19 +95,5 @@ return [
     |
     */
 
-    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel')) . '-cache-'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cache Serializable Classes
-    |--------------------------------------------------------------------------
-    |
-    | This option controls which classes may be unserialized from cache. Set
-    | to false to disallow all PHP object unserialization (recommended for
-    | security). Explicitly list classes if your app intentionally caches
-    | PHP objects.
-    |
-    */
-
-    'serializable_classes' => false,
+    'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_cache_'),
 ];

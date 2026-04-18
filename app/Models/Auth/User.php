@@ -22,14 +22,14 @@ class User extends BaseAuthenticatable
      * @var array<string, string>
      */
     public const array COLUMNS = [
-        'id' => 'id',
-        'name' => 'name',
-        'email' => 'email',
-        'password' => 'password',
-        'rememberToken' => 'remember_token',
+        'id'              => 'id',
+        'name'            => 'name',
+        'email'           => 'email',
+        'password'        => 'password',
+        'rememberToken'   => 'remember_token',
         'emailVerifiedAt' => 'email_verified_at',
-        'createdAt' => 'created_at',
-        'updatedAt' => 'updated_at',
+        'createdAt'       => 'created_at',
+        'updatedAt'       => 'updated_at',
     ];
 
     /**
@@ -72,7 +72,7 @@ class User extends BaseAuthenticatable
     {
         return [
             static::resolveColumn('emailVerifiedAt') => 'datetime',
-            static::resolveColumn('password') => 'hashed',
+            static::resolveColumn('password')        => 'hashed',
         ];
     }
 }

@@ -14,7 +14,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert the response matches the standard API error format.
      *
-     * @param  TestResponse<Response>  $testResponse
+     * @param TestResponse<Response> $testResponse
      */
     protected function assertApiError(TestResponse $testResponse, int $status = 400): void
     {
@@ -26,7 +26,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert the response matches the standard API paginated format.
      *
-     * @param  TestResponse<Response>  $testResponse
+     * @param TestResponse<Response> $testResponse
      */
     protected function assertApiPaginated(TestResponse $testResponse): void
     {
@@ -43,7 +43,7 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert the response matches the standard API success format.
      *
-     * @param  TestResponse<Response>  $testResponse
+     * @param TestResponse<Response> $testResponse
      */
     protected function assertApiSuccess(TestResponse $testResponse, int $status = 200): void
     {
@@ -55,8 +55,8 @@ abstract class TestCase extends BaseTestCase
     /**
      * Assert the response is a 422 validation error with optional field checks.
      *
-     * @param  TestResponse<Response>  $testResponse
-     * @param  list<string>  $fields
+     * @param TestResponse<Response> $testResponse
+     * @param list<string>           $fields
      */
     protected function assertApiValidationError(TestResponse $testResponse, array $fields = []): void
     {

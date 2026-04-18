@@ -24,7 +24,7 @@ abstract class BaseController extends Controller
         return response()
             ->json(
                 [
-                    'status' => 'error',
+                    'status'  => 'error',
                     'message' => $message,
                 ],
                 $statusCode,
@@ -50,7 +50,7 @@ abstract class BaseController extends Controller
      * Return paginated data in a consistent JSON format.
      * Accepts a ResourceCollection (wrapping a paginator) or a raw LengthAwarePaginator.
      *
-     * @param  ResourceCollection<int, JsonResource>|LengthAwarePaginator<int, Model>  $data
+     * @param ResourceCollection<int, JsonResource>|LengthAwarePaginator<int, Model> $data
      */
     public function paginatedResponse(
         ResourceCollection|LengthAwarePaginator $data,
@@ -64,16 +64,16 @@ abstract class BaseController extends Controller
         return response()
             ->json(
                 [
-                    'status' => 'success',
+                    'status'  => 'success',
                     'message' => $message,
-                    'data' => $data instanceof ResourceCollection
+                    'data'    => $data instanceof ResourceCollection
                         ? $data->resolve()
                         : $paginator->items(),
                     'pagination' => [
                         'current_page' => $paginator->currentPage(),
-                        'total_pages' => $paginator->lastPage(),
-                        'total_items' => $paginator->total(),
-                        'per_page' => $paginator->perPage(),
+                        'total_pages'  => $paginator->lastPage(),
+                        'total_items'  => $paginator->total(),
+                        'per_page'     => $paginator->perPage(),
                     ],
                 ],
             );
@@ -91,9 +91,9 @@ abstract class BaseController extends Controller
         if (is_array($data)) {
             $caller = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1] ?? [];
 
-            $class = $caller['class'] ?? static::class;
+            $class    = $caller['class']    ?? static::class;
             $function = $caller['function'] ?? 'unknown';
-            $line = isset($caller['line'])
+            $line     = isset($caller['line'])
                 ? " (L{$caller['line']})"
                 : '';
 
@@ -103,9 +103,9 @@ abstract class BaseController extends Controller
         return response()
             ->json(
                 [
-                    'status' => 'success',
+                    'status'  => 'success',
                     'message' => $message,
-                    'data' => $data instanceof JsonResource
+                    'data'    => $data instanceof JsonResource
                         ? $data->resolve()
                         : $data,
                 ],

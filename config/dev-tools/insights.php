@@ -7,9 +7,9 @@ use PhpCsFixer\Fixer\ClassNotation\ClassDefinitionFixer;
 use SlevomatCodingStandard\Sniffs\Classes\ForbiddenPublicPropertySniff;
 use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
 
-/*
+/**
  * PHP Insights Configuration
- * --------------------------
+ * --------------------------.
  *
  * Extends the base configuration from laravel-dev-tools.
  *
@@ -17,18 +17,17 @@ use SlevomatCodingStandard\Sniffs\TypeHints\ReturnTypeHintSniff;
  * use the spread operator [...] to merge. Do NOT use array_replace_recursive()
  * as it replaces by index instead of merging.
  */
-
-$baseConfig = [];
-$currentFile = __FILE__;
+$baseConfig    = [];
+$currentFile   = __FILE__;
 $possiblePaths = [
     /* Normal Laravel project */
-    dirname(__DIR__, 2).'/vendor/zairakai/laravel-dev-tools/config/insights.base.php',
+    dirname(__DIR__, 2) . '/vendor/zairakai/laravel-dev-tools/config/insights.base.php',
 
     /* Testbench environment */
-    dirname(__DIR__, 6).'/config/insights.base.php',
+    dirname(__DIR__, 6) . '/config/insights.base.php',
 
     /* Local project config */
-    dirname(__DIR__, 2).'/config/insights.base.php',
+    dirname(__DIR__, 2) . '/config/insights.base.php',
 ];
 
 foreach ($possiblePaths as $path) {
@@ -46,6 +45,8 @@ $baseConfig['exclude'] = array_unique([
     'build',
     'storage',
     'public',
+    // autoload-dev only — intentionally global, not available in production
+    'app/Support/Helpers-dev.php',
 ]);
 
 $baseConfig['remove'] = [

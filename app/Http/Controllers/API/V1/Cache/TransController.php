@@ -35,7 +35,7 @@ class TransController extends Controller
                 $globResult = glob(base_path("lang/{$lang}/*.php"));
 
                 /** @var array<int, string> $files */
-                $files = $globResult !== false ? $globResult : [];
+                $files = false !== $globResult ? $globResult : [];
 
                 /** @var string $appName */
                 $appName = config('app.name');
@@ -46,7 +46,7 @@ class TransController extends Controller
                     $name = basename($file, '.php');
 
                     /** @var array<string, mixed> $translations */
-                    $translations = require $file;
+                    $translations   = require $file;
                     $strings[$name] = $this->replaceAppName($appName, $translations);
                 }
 
@@ -60,7 +60,8 @@ class TransController extends Controller
     /**
      * Recursively replace :app_name placeholder with the actual app name.
      *
-     * @param  array<string, mixed>  $array
+     * @param array<string, mixed> $array
+     *
      * @return array<string, mixed>
      */
     private function replaceAppName(string $appName, array $array): array
@@ -68,9 +69,10 @@ class TransController extends Controller
         foreach ($array as $key => $value) {
             if (is_array($value)) {
                 /** @var array<string, mixed> $nested */
-                $nested = $value;
+                $nested      = $value;
                 $array[$key] = $this->replaceAppName($appName, $nested);
-            } elseif (is_string($value)) {
+            }
+            elseif (is_string($value)) {
                 $array[$key] = str_replace(':app_name', $appName, $value);
             }
         }

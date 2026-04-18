@@ -3,8 +3,6 @@
 /node_modules
 
 # Lock files — not committed in templates
-composer.lock
-package-lock.json
 
 # Build output
 /build
