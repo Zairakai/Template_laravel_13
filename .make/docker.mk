@@ -1,4 +1,7 @@
-##@ Docker
+# Docker Targets
+# Shortcuts for docker compose operations and container interactions
+
+## —— 🐳 Docker ——
 
 PHP_SERVICE  ?= php
 NODE_SERVICE ?= node

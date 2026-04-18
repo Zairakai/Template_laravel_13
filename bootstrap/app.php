@@ -16,9 +16,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        api: __DIR__.'/../routes/api.php',
-        commands: __DIR__.'/../routes/console.php',
+        web: __DIR__ . '/../routes/web.php',
+        api: __DIR__ . '/../routes/api.php',
+        commands: __DIR__ . '/../routes/console.php',
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {})
@@ -32,7 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => 'Unauthenticated.',
             ], JsonResponse::HTTP_UNAUTHORIZED);
         });
@@ -43,7 +43,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => $e->getMessage() ?: 'This action is unauthorized.',
             ], JsonResponse::HTTP_FORBIDDEN);
         });
@@ -54,7 +54,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => 'Resource not found.',
             ], JsonResponse::HTTP_NOT_FOUND);
         });
@@ -65,9 +65,9 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => 'Validation failed.',
-                'errors' => $e->errors(),
+                'errors'  => $e->errors(),
             ], JsonResponse::HTTP_UNPROCESSABLE_ENTITY);
         });
 
@@ -77,7 +77,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             return response()->json([
-                'status' => 'error',
+                'status'  => 'error',
                 'message' => $e->getMessage() ?: 'An HTTP error occurred.',
             ], $e->getStatusCode());
         });

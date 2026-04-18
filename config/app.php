@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 return [
     /*
-    |--------------------------------------------------------------------------
     | Application Name
-    |--------------------------------------------------------------------------
     |
     | This value is the name of your application, which will be used when the
     | framework needs to place the application's name in a notification or
@@ -17,9 +15,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
-    |--------------------------------------------------------------------------
     | Application Environment
-    |--------------------------------------------------------------------------
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
@@ -30,9 +26,7 @@ return [
     'env' => env('APP_ENV', 'production'),
 
     /*
-    |--------------------------------------------------------------------------
     | Application Debug Mode
-    |--------------------------------------------------------------------------
     |
     | When your application is in debug mode, detailed error messages with
     | stack traces will be shown on every error that occurs within your
@@ -43,9 +37,7 @@ return [
     'debug' => (bool) env('APP_DEBUG', false),
 
     /*
-    |--------------------------------------------------------------------------
     | Application URL
-    |--------------------------------------------------------------------------
     |
     | This URL is used by the console to properly generate URLs when using
     | the Artisan command line tool. You should set this to the root of
@@ -56,9 +48,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     /*
-    |--------------------------------------------------------------------------
     | Application Timezone
-    |--------------------------------------------------------------------------
     |
     | Here you may specify the default timezone for your application, which
     | will be used by the PHP date and date-time functions. The timezone
@@ -69,9 +59,7 @@ return [
     'timezone' => env('APP_TIMEZONE', 'UTC'),
 
     /*
-    |--------------------------------------------------------------------------
     | Application Locale Configuration
-    |--------------------------------------------------------------------------
     |
     | The application locale determines the default locale that will be used
     | by Laravel's translation / localization methods. This option can be
@@ -79,16 +67,12 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
-
+    'locale'          => env('APP_LOCALE', 'en'),
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
-
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale'    => env('APP_FAKER_LOCALE', 'en_US'),
 
     /*
-    |--------------------------------------------------------------------------
     | Encryption Key
-    |--------------------------------------------------------------------------
     |
     | This key is utilized by Laravel's encryption services and should be set
     | to a random, 32 character string to ensure that all encrypted values
@@ -103,9 +87,7 @@ return [
     'previous_keys' => [...array_filter(explode(',', env('APP_PREVIOUS_KEYS', '')))],
 
     /*
-    |--------------------------------------------------------------------------
     | Maintenance Mode Driver
-    |--------------------------------------------------------------------------
     |
     | These configuration options determine the driver used to determine and
     | manage Laravel's "maintenance mode" status. The "cache" driver will
@@ -117,6 +99,6 @@ return [
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+        'store'  => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 ];

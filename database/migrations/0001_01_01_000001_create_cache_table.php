@@ -1,5 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
+use App\Models\Cache\Entry;
+use App\Models\Cache\Lock;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +15,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cache_locks');
-        Schema::dropIfExists('cache');
+        Schema::dropIfExists(Lock::getTableName());
+        Schema::dropIfExists(Entry::getTableName());
     }
 
     /**
@@ -20,16 +24,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->mediumText('value');
-            $table->integer('expiration');
+        Schema::create(Entry::getTableName(), function (Blueprint $table) {
+            $table->string(Entry::resolveColumn('key'))->primary();
+            $table->mediumText(Entry::resolveColumn('value'));
+            $table->integer(Entry::resolveColumn('expiration'));
         });
 
-        Schema::create('cache_locks', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->string('owner');
-            $table->integer('expiration');
+        Schema::create(Lock::getTableName(), function (Blueprint $table) {
+            $table->string(Lock::resolveColumn('key'))->primary();
+            $table->string(Lock::resolveColumn('owner'));
+            $table->integer(Lock::resolveColumn('expiration'));
         });
     }
 };

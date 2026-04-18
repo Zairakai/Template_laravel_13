@@ -29,7 +29,7 @@ if (! function_exists('csvToSql')) {
     function csvToSql(
         string $tableOrModel,
         string $csvPath,
-        array $columnMap = []
+        array $columnMap = [],
     ): string {
         $table = is_subclass_of($tableOrModel, Model::class)
             ? (new $tableOrModel)->getTable()
@@ -41,17 +41,16 @@ if (! function_exists('csvToSql')) {
             throw new RuntimeException(sprintf('csvToSql: cannot open CSV file "%s"', $csvPath));
         }
 
-        /** @var array<int, string>|false $headers */
         $headers = fgetcsv($handle);
 
-        if (
-            $headers === false
-            || $headers === []
-        ) {
+        if ($headers === false) {
             fclose($handle);
 
             throw new RuntimeException(sprintf('csvToSql: CSV file "%s" is empty or has no headers', $csvPath));
         }
+
+        // Cast headers to strings — fgetcsv may return null for empty CSV fields
+        $headers = array_map(strval(...), $headers);
 
         $columns = array_map(
             static fn (string $col): string => '`'.($columnMap[$col] ?? $col).'`',
@@ -60,7 +59,6 @@ if (! function_exists('csvToSql')) {
 
         $rows = [];
 
-        /** @var array<int, string>|false $line */
         while (false !== ($line = fgetcsv($handle))) {
             /** @var array<string, string> $row */
             $row = array_combine($headers, $line);

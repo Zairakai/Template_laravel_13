@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
         DB::table(User::make()->getTable())
             ->where('email', 'admin@example.com')
             ->update([
-                'email' => env('ADMIN_EMAIL', 'admin@example.com'),
+                'email'    => env('ADMIN_EMAIL', 'admin@example.com'),
                 'password' => $defaultPassword,
             ]);
     }

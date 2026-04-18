@@ -13,8 +13,8 @@ class PasswordResetToken extends BaseModel
      * @var array<string, string>
      */
     public const array COLUMNS = [
-        'email' => 'email',
-        'token' => 'token',
+        'email'     => 'email',
+        'token'     => 'token',
         'createdAt' => 'created_at',
     ];
 
