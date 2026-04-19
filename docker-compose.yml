@@ -106,6 +106,28 @@ services:
       retries: 3
       timeout: 5s
 
+  adminer:
+    image: adminer:latest
+    container_name: "${APP_SLUG}-adminer"
+
+    ports:
+      - "${FORWARD_ADMINER_PORT:-8080}:8080"
+    networks:
+      - app
+    depends_on:
+      - mysql
+
+  redisinsight:
+    image: redis/redisinsight:latest
+    container_name: "${APP_SLUG}-redisinsight"
+
+    ports:
+      - "${FORWARD_REDISINSIGHT_PORT:-5540}:5540"
+    networks:
+      - app
+    depends_on:
+      - redis
+
 networks:
   app:
     driver: bridge
