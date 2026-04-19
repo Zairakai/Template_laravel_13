@@ -76,3 +76,16 @@ make quality        # run full quality gate (PHP + JS)
 make test           # run tests
 make ci             # full CI pipeline
 ```
+
+## Services
+
+All services start with `make up`. Override any port via `.env`.
+
+| Service | URL | Override variable | Credentials |
+| :--- | :--- | :--- | :--- |
+| Application | `http://localhost:80` | `APP_PORT` | — |
+| Vite (HMR) | `http://localhost:5173` | `VITE_PORT` | — |
+| Adminer (MySQL) | `http://localhost:8080` | `FORWARD_ADMINER_PORT` | System: `MySQL` · Server: `mysql` · User / Password / DB: see `DB_*` in `.env` |
+| RedisInsight | `http://localhost:5540` | `FORWARD_REDISINSIGHT_PORT` | Host: `redis` · Port: `6379` · No password |
+| Mailpit | `http://localhost:8025` | `FORWARD_MAILPIT_DASHBOARD_PORT` | No authentication |
+| MinIO Console | `http://localhost:9001` | `FORWARD_MINIO_CONSOLE_PORT` | `MINIO_ROOT_USER` / `MINIO_ROOT_PASSWORD` |
