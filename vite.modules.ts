@@ -59,14 +59,15 @@ export function createPlugins() {
 export function createBuildConfig({ isLocal, sourcemap }: Pick<EnvVars, 'isLocal' | 'sourcemap'>) {
   return {
     cssSourcemap: sourcemap,
-    minify: isLocal ? (false as const) : ('esbuild' as const),
+    minify: isLocal ? (false as const) : ('oxc' as const),
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[ext]/[name]-[hash][extname]',
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
-        manualChunks: {
-          'vue-vendor': ['pinia', 'vue', 'vue-router'],
+        // Rolldown (Vite 8) only accepts a function here.
+        manualChunks(id: string): string | undefined {
+          return /[\\/]node_modules[\\/](pinia|vue|vue-router|@vue)[\\/]/.test(id) ? 'vue-vendor' : undefined
         },
       },
     },
