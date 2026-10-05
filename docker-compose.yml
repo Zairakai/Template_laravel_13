@@ -87,22 +87,23 @@ services:
     networks:
       - app
 
-  minio:
-    image: "${MINIO_IMAGE}"
-    container_name: "${APP_SLUG}-minio"
+  rustfs:
+    image: "${RUSTFS_IMAGE}"
+    container_name: "${APP_SLUG}-rustfs"
     ports:
-      - "${FORWARD_MINIO_PORT:-9000}:9000"
-      - "${FORWARD_MINIO_CONSOLE_PORT:-9001}:9001"
+      - "${FORWARD_RUSTFS_PORT:-9000}:9000"
+      - "${FORWARD_RUSTFS_CONSOLE_PORT:-9001}:9001"
     environment:
-      MINIO_ROOT_USER: "${MINIO_ROOT_USER}"
-      MINIO_ROOT_PASSWORD: "${MINIO_ROOT_PASSWORD}"
+      RUSTFS_ACCESS_KEY: "${RUSTFS_ACCESS_KEY}"
+      RUSTFS_SECRET_KEY: "${RUSTFS_SECRET_KEY}"
+      RUSTFS_CONSOLE_ENABLE: "true"
     volumes:
-      - "app-minio:/data"
-    command: 'server /data --console-address ":9001"'
+      - "app-rustfs:/data"
+    command: ["/data"]
     networks:
       - app
     healthcheck:
-      test: ["CMD", "mc", "ready", "local"]
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
       retries: 3
       timeout: 5s
 
@@ -137,5 +138,5 @@ volumes:
     driver: local
   app-redis:
     driver: local
-  app-minio:
+  app-rustfs:
     driver: local
